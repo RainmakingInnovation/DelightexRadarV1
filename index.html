@@ -1229,7 +1229,7 @@
           </div>
           <div class='analysis-btn'>
             <i class="fas fa-chevron-circle-down"></i>
-            <div class="popup-analysis-label">Insight</div>
+            <div class="popup-analysis-label">Analysis</div>
           </div>
   
         </div>
@@ -1269,13 +1269,6 @@
       <div>
           <div>
 
-    
-            <div>
-              <div class="button b2" id="button-17">
-                <input type="checkbox" class="checkbox" />
-                <div class="knobs"></div>
-                <div class="layer"></div>
-              </div>
 
           <div id="save-button-container">
             <button class="switch-button" id="save-button">Save Image</button>
@@ -1532,7 +1525,7 @@
                 d3.select(".popup-section-a").style("display", "")
                 d3.select(".popup-section-b").style("display", "none")
                 d3.select(".analysis-btn").style("display", "")
-                d3.select(".popup-analysis-label").html("Insight")
+                d3.select(".popup-analysis-label").html("Analysis")
                 
                 var opp_space = d.data.value.key
                 var funding_amount = d.data.value.value
@@ -1683,7 +1676,9 @@
                     .append("path")
                     .classed("segment-band", true)
                     .attr("d", segmentLabelBandArc)
-                    .attr("fill", "#82ADBD")
+                    .attr("fill", function(d) {
+                        return focusAreaeBandColorScale(d.data.value.key);
+                      })
   
                   var tmpLabels = tmp_chartSVG
                     .append("g")
@@ -1960,7 +1955,7 @@
                       d3.select(".popup-section-a").style("display", "none")
                       d3.select(".popup-section-b").style("display", "")
                       d3.select(".analysis-btn").style("display", "")
-                       d3.select(".popup-analysis-label").html("Analysis")
+                       d3.select(".popup-analysis-label").html("Insight")
                       bar_data = popup_data
                       bar_data.forEach(function(v) {
                           v.Funding = v[" Total funding (US$)"]
@@ -1973,7 +1968,7 @@
                         d3.select(".popup-section-a").style("display", "")
                         d3.select(".popup-section-b").style("display", "none")
                         d3.select(".analysis-btn").style("display", "")
-                         d3.select(".popup-analysis-label").html("Insight")
+                         d3.select(".popup-analysis-label").html("Analysis")
                     
   
                       }
@@ -2007,6 +2002,8 @@
 
               }
 
+              console.log(json.features)
+
   
               var leftCentroids = json.features.map(function(feature) {
                 return leftPath.centroid(feature);
@@ -2015,12 +2012,18 @@
   
   
               // manual adjustments to country centroids:
-              leftCentroids[170] = [160.28813150973434, 200.53652705535595];
-              leftCentroids[28] = [133.39281332553415, 132.40027710817226];
+              
+              
               leftCentroids[6] = [499.3566464049186, 484.20930510242];
               leftCentroids[121] = [381.8299314691847, 98.47135868701795];
-              leftCentroids[177] = [890, 450]
+              
               leftCentroids[178] = [708, 370]
+
+              leftCentroids[167] = [200, 330]
+              leftCentroids[28] = [493, 304];
+              leftCentroids[177] = [743, 438]
+
+              leftCentroids[170] = [756, 410];
   
               data_country = d3
                 .nest()
@@ -2194,14 +2197,12 @@
               "#5FBDFB",
               //"#5FBDFB",
               "#EA3B66",
-              "#EA3B66",
-              "#EA3B66",
               //"#5DDA86",
               //"#5DDA86",
               // "#5DDA86",
               "#F5D932",
-              "#F5D932"
               // "#F5D932"
+              "#4CB943"
             ]);
   
   
@@ -2500,7 +2501,7 @@
               update_bar(d)
             });
   
-            var themeSegments = chartSVG
+            /*  var themeSegments = chartSVG
               .selectAll("theme-segments")
               .data(outerChartPieData)
               .enter()
@@ -2512,9 +2513,9 @@
                   d.data.value.values[0]["Opportunity Space"]
                 );
               })
-              .style("opacity", "0.7")*/
+              .style("opacity", "0.7")
               .style("stroke", "white")
-              .style("stroke-width", "2px");
+              .style("stroke-width", "2px");*/
   
             var backgroundSegments = chartSVG
               .selectAll("background-segments")
@@ -2609,10 +2610,10 @@
                   d.data.value.key.toLowerCase().replace(/ /g, "-") + "-band"
                 );
               })
-              .attr("fill", "#82ADBD")
-              /* .attr("fill", function(d) {
+              //.attr("fill", "#82ADBD")
+               .attr("fill", function(d) {
                 return focusAreaeBandColorScale(d.data.value.key);
-              })*/
+              })
               .on("mouseover", function(d) {
                 labelMouseOver(d);
                 hoverInfoFunction(d);
@@ -4981,7 +4982,9 @@
                     .append("path")
                     .classed("segment-band", true)
                     .attr("d", segmentLabelBandArc)
-                    .attr("fill", "#82ADBD")  
+                    .attr("fill", function(d) {
+                      return focusAreaeBandColorScale(d.data.value.key);
+                    })
   
                   var tmpLabels = tmp_chartSVG
                     .append("g")
