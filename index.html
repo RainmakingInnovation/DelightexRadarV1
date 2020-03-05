@@ -15,7 +15,7 @@
       body {
         display: grid;
         grid-template-columns: 146px 800px 160px 200px;
-        grid-template-rows: 300px 120px 400px;
+        grid-template-rows: 280px 120px 200px;
         grid-gap: 0.1em;
         margin: auto;
       }
@@ -1282,7 +1282,7 @@
 
     <script>
         var width = 800,
-          height = 860,
+          height = 740,
           innerRadius = 50,
           outerRadius = 300,
           keySize = 10,
@@ -1343,7 +1343,7 @@
           .append("g")
           .attr(
             "transform",
-            "translate(" + width / 2 + "," + (height / 2 - 20) + ")"
+            "translate(" + width / 2 + "," + (height / 2 + 40) + ")"
           );
   
         var keySVG = d3
@@ -1369,7 +1369,7 @@
           .append("text")
           .attr("class", "chart-title")
           .text("Delightex Compass (V1)")
-          .attr("y", (-height * 4.15) / 10);
+          .attr("y", -height/2 + 10);
   
         var leftProjection = d3
           .geoMercator()
