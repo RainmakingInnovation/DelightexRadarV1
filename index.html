@@ -1087,8 +1087,6 @@
     <div class="popup-bg">
         <div class="popup-container added">
           <div class="popup-tag">
-            <div id="theme-tag" class="popup-tag-item">Theme</div>
-            <div class="popup-tag-item-arr"> > </div>
             <div id="focus-area-tag" class="popup-tag-item">Focus Area</div>
           </div>
           <div class="popup-close">
@@ -1123,29 +1121,8 @@
                   <div class="opp-space-summary-column column-icon">
                     <i class="far fa-calendar-alt"></i>
                   </div>
-                  <div class="opp-space-summary-column column-desc">Avg Founded Year + Maturity: </div>
+                  <div class="opp-space-summary-column column-desc">Avg Founded Year: </div>
                   <div id="avg-funding-year" class="opp-space-summary-column column-value"></div>
-                </div>
-                <div class="opportunity-space-summary-row">
-                  <div class="opp-space-summary-column column-icon">
-                    <i class="fas fa-compass"></i>
-                  </div>
-                  <div class="opp-space-summary-column column-desc">Most Active Competitor: </div>
-                  <div id="most-active-competitor" class="opp-space-summary-column column-value"></div>
-                </div>
-                <div class="opportunity-space-summary-row">
-                  <div class="opp-space-summary-column column-icon">
-                    <i class="fas fa-cogs"></i>
-                  </div>
-                  <div class="opp-space-summary-column column-desc">Popular Technology + Business Model: </div>
-                  <div id="most-pop-tech" class="opp-space-summary-column column-value"></div>
-                </div>
-                <div class="opportunity-space-summary-row">
-                  <div class="opp-space-summary-column column-icon">
-                    <i class="fas fa-cubes"></i>
-                  </div>
-                  <div class="opp-space-summary-column column-desc">Pattern Recognised: </div>
-                  <div id="pattern-recognized" class="opp-space-summary-column column-value"></div>
                 </div>
               </div>
             </div>
@@ -1876,16 +1853,16 @@
                   var avgYear = Math.round(yearTotal/numStartups)
                   var maturityMode = modeArray(maturityList)
 
-                  d3.select("#theme-tag").html(popup_data[0]["Themes"])
+                  //d3.select("#theme-tag").html(popup_data[0]["Themes"])
                   d3.select("#focus-area-tag").html(popup_data[0]["Opportunity Space"])
                   d3.select(".opportunity-space-title").html(popup_data[0]["Opportunity Space"])
                   d3.select(".opportunity-space-description").html(popup_data[0]["Opportunity Space Description"])
                   d3.select("#total-no-startups").html(numStartups)
                   d3.select("#total-avg-funding").html("$" + formatFunding(funding_amount) + ", $" + formatFunding(avgFunding))
-                  d3.select("#avg-funding-year").html(avgYear + ", n/a")
-                  d3.select("#most-active-competitor").html(popup_data[0]["Most Active Competitor"])
-                  d3.select("#most-pop-tech").html(popup_data[0]["Popular Technology + Business Model"])
-                  d3.select("#pattern-recognized").html(popup_data[0]["Pattern Recognised"])
+                  d3.select("#avg-funding-year").html(avgYear)
+                  //d3.select("#most-active-competitor").html(popup_data[0]["Most Active Competitor"])
+                  //d3.select("#most-pop-tech").html(popup_data[0]["Popular Technology + Business Model"])
+                  //d3.select("#pattern-recognized").html(popup_data[0]["Pattern Recognised"])
                   
                   console.log("opp_space", opp_space)
                   heroPopupData = []
@@ -2194,15 +2171,16 @@
             .scaleOrdinal()
             .domain(focusAreaOrder)
             .range([
+            "#4CB943",
               "#5FBDFB",
-              //"#5FBDFB",
-              "#EA3B66",
+              "#F5D932",
+              "#EA3B66"
               //"#5DDA86",
               //"#5DDA86",
               // "#5DDA86",
-              "#F5D932",
+              
               // "#F5D932"
-              "#4CB943"
+              
             ]);
   
   
