@@ -1294,7 +1294,7 @@
           filter = 0,
           filterKey = "",
           industryFilter = "All Startups",
-          logoPath = "",
+          logoPath = "assets/delightex.png",
           titleLogoWidth = 80,
           titleLogoHeight = 50,
           hoverOn = 0;
@@ -1343,7 +1343,7 @@
           .append("g")
           .attr(
             "transform",
-            "translate(" + width / 2 + "," + (height / 2 + 20) + ")"
+            "translate(" + width / 2 + "," + (height / 2 - 20) + ")"
           );
   
         var keySVG = d3
@@ -1368,8 +1368,8 @@
         var chartTitle = chartSVG
           .append("text")
           .attr("class", "chart-title")
-          .text("Delightex Radar V1")
-          .attr("y", (-height * 4.55) / 10);
+          .text("Delightex Compass (V1)")
+          .attr("y", (-height * 4.15) / 10);
   
         var leftProjection = d3
           .geoMercator()
@@ -1406,10 +1406,10 @@
   
         //CHANGE HERE:
         var focusAreaOrder = [
-        "calming & relaxing _ relieving stress",
+        "relieving stress",
         "energizing",
         "improving sleep",
-        "creating happiness or euphoria"
+        "creating euphoria"
       ];
   
         //CHANGE HERE:
