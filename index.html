@@ -4,13 +4,14 @@
     <meta charset="utf-8" />
     <title>Dashboard</title>
     <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.0.1/spin.min.js"></script>
     <script src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"></script>
     <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js"></script>
     <script
       src="https://kit.fontawesome.com/ea2379d57d.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="icon" href="assets/favicon.ico" />
+    <link rel="icon" href="assets/favicon.ico"/>
     <style type="text/css">
       body {
         display: grid;
@@ -616,7 +617,8 @@
         max-height: 300px;
         overflow: scroll;
         font-family: "Graphik Regular";
-        background-color: white;
+        background-color: black;
+        color: white;
         border: 1px solid #787878;
         padding: 10px;
       }
@@ -628,6 +630,10 @@
 
       .startup-table td {
         min-width: 60px;
+      }
+
+      .startup-table td > a {
+        color: white;
       }
 
       .table-header {
@@ -1299,6 +1305,24 @@
         (bar_height = 460),
         (popupMode = { page: "none", type: "none" });
 
+                    // loader settings
+          var opts = {
+            lines: 9, // The number of lines to draw
+            length: 7, // The length of each line
+            width: 8, // The line thickness
+            radius: 24, // The radius of the inner circle
+            top: "57%",
+            left: "38.5%",
+            color: "#132A54", // #rgb or #rrggbb or array of colors
+            speed: 1.9, // Rounds per second
+            trail: 40, // Afterglow percentage
+            className: "spinner" // The CSS class to assign to the spinner
+          };
+
+          var target = document.getElementById("chart-container");
+
+          var spinner = new Spinner(opts).spin(target);
+
       d3.select("#radar-toggle-btn").attr("class", "left-sidebar-btn active");
       d3.select(".popup-bg").style("display", "none");
 
@@ -1362,7 +1386,8 @@
         .append("text")
         .attr("class", "chart-title")
         .text("Delightex Compass (V1)")
-        .attr("y", -height / 2 + 10);
+        .attr("y", -height / 2 + 10)
+        .style("display", "none")
 
       var leftProjection = d3
         .geoMercator()
@@ -1395,7 +1420,8 @@
         .attr("width", titleLogoWidth)
         .attr("height", titleLogoHeight)
         .attr("y", -titleLogoHeight / 2)
-        .attr("x", -titleLogoWidth / 2);
+        .attr("x", -titleLogoWidth / 2)
+        .style("display", "none")
 
       //CHANGE HERE:
       var focusAreaOrder = [
@@ -1417,6 +1443,14 @@
           d3.csv(
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vSafGm_gSEK_M6dTEcS3sd2N7CcehHPfg561BJtgzrHClIt5DH79yqHI1LpeOLbbwGob_Xi0kVUdxMB/pub?gid=337694780&single=true&output=csv"
           ).then(function(hero_data) {
+
+              spinner.stop();
+
+              d3.select("#button-16").style("display", "block")
+              d3.select(".dropdown-industry").style("display", "inline-block")
+              d3.select("#save-button").style("display", "block") 
+              d3.select(".chart-title").style("display", "")
+              chartLogo.style("display", "none")
             d3.json("assets/world_countries.json").then(function(json) {
               json.features.push({
                 type: "features",
