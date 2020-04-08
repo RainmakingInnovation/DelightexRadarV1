@@ -1187,6 +1187,12 @@
     padding-top: 5px;
   }
 
+  .map-title {
+        font-size: 1.2em;
+    font-family: "Graphik Bold";
+    padding: 20px;
+  }
+
     </style>
   </head>
 
@@ -1394,6 +1400,7 @@
       </div>
       <div class="map-tooltip"></div>
       <div class="bg"></div>
+      <div class="map-title">Delightex Focus Areas</div>
       <div id="map"></div>
     </div>
     <div id="chart-container"></div>
@@ -1541,7 +1548,7 @@
       var chartTitle = chartSVG
         .append("text")
         .attr("class", "chart-title")
-        .text("Delightex Compass (V1)")
+        .text("Delightex Focus Areas")
         .attr("y", -height / 2 + 10)
         .style("display", "none")
 
