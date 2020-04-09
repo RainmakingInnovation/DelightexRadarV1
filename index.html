@@ -461,6 +461,41 @@
         display: none;
       }
 
+      #button-19 .knobs:before {
+        content: "Focus Areas";
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 80px;
+        height: 10px;
+        color: #fff;
+        font-size: 10px;
+        font-family: "Graphik Regular";
+        font-weight: bold;
+        text-align: center;
+        line-height: 1;
+        padding: 9px 4px;
+        background-color: #132953;
+        border-radius: 2px;
+        transition: 0.8s ease all,
+          left 0.8s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+      }
+
+      #button-19 .checkbox:checked + .knobs:before {
+        content: "Venture Spaces";
+        left: 26px;
+        background-color: #82ADBD;
+      }
+
+      #button-19 .layer {
+        background-color: #373737;
+      }
+
+      .button.b3 {
+        border-radius: 1px;
+        top: 60%;
+      }
+
       #button-18 .knobs:before {
         content: "Focus Areas";
         position: absolute;
@@ -527,6 +562,7 @@
         background-color: #ea3b66;
       }
 
+      #button-19 .checkbox:active + .knobs:before,
       #button-18 .checkbox:active + .knobs:before,
       #button-17 .checkbox:active + .knobs:before,
       #button-16 .checkbox:active + .knobs:before {
@@ -1396,6 +1432,11 @@
     <div class="map-container">
       <div class="sidebar">
         <div class="sidebar-title"></div>
+                <div class="button b3" id="button-19">
+          <input type="checkbox" class="checkbox" />
+          <div class="knobs"></div>
+          <div class="layer"></div>
+    </div>
         <div id="startup-list"></div>
       </div>
       <div class="map-tooltip"></div>
@@ -3717,6 +3758,10 @@
 
               d3.select("#button-18").on("change", function() {
                 setTimeout(function() { window.location = "https://rainmakinginnovation.github.io/DelightexRadarV2/" }, 1000);
+              });
+
+              d3.select("#button-19").on("change", function() {
+                setTimeout(function() { window.location = "https://rainmakinginnovation.github.io/DelightexRadarV1/" }, 1000);
               });
 
               var CompetitorMode = 0;
