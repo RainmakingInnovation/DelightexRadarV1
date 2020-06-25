@@ -1644,14 +1644,14 @@
       var themeOrder = ["Delightful Experiences"];
 
       d3.csv(
-        "https://docs.google.com/spreadsheets/d/e/2PACX-1vSafGm_gSEK_M6dTEcS3sd2N7CcehHPfg561BJtgzrHClIt5DH79yqHI1LpeOLbbwGob_Xi0kVUdxMB/pub?gid=1197244261&single=true&output=csv"
-      , {crossOrigin: "anonymous"}).then(function(data) {
+        "https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/e/2PACX-1vSafGm_gSEK_M6dTEcS3sd2N7CcehHPfg561BJtgzrHClIt5DH79yqHI1LpeOLbbwGob_Xi0kVUdxMB/pub?gid=1197244261&single=true&output=csv"
+      ,{crossOrigin: "use-credentials"}).then(function(data) {
         d3.csv(
-          "https://docs.google.com/spreadsheets/d/e/2PACX-1vSafGm_gSEK_M6dTEcS3sd2N7CcehHPfg561BJtgzrHClIt5DH79yqHI1LpeOLbbwGob_Xi0kVUdxMB/pub?gid=1296667152&single=true&output=csv"
-        ,{crossOrigin: "anonymous"}).then(function(desc) {
+          "https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/e/2PACX-1vSafGm_gSEK_M6dTEcS3sd2N7CcehHPfg561BJtgzrHClIt5DH79yqHI1LpeOLbbwGob_Xi0kVUdxMB/pub?gid=1296667152&single=true&output=csv"
+        ,{crossOrigin: "use-credentials"}).then(function(desc) {
           d3.csv(
-            "https://docs.google.com/spreadsheets/d/e/2PACX-1vSafGm_gSEK_M6dTEcS3sd2N7CcehHPfg561BJtgzrHClIt5DH79yqHI1LpeOLbbwGob_Xi0kVUdxMB/pub?gid=337694780&single=true&output=csv"
-          ,{crossOrigin: "anonymous"}).then(function(hero_data) {
+            "https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/e/2PACX-1vSafGm_gSEK_M6dTEcS3sd2N7CcehHPfg561BJtgzrHClIt5DH79yqHI1LpeOLbbwGob_Xi0kVUdxMB/pub?gid=337694780&single=true&output=csv"
+          ,{crossOrigin: "use-credentials"}).then(function(hero_data) {
 
               spinner.stop();
 
